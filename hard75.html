@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>75 HARD — Forge Your Mind</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:#0a0a0a; --near-black:#111111; --card-bg:#161616;
+  --border:#2a2a2a; --border-bright:#3a3a3a;
+  --red:#e03030; --red-dark:#8b1a1a;
+  --amber:#d97706; --green:#16a34a; --green-bright:#22c55e;
+  --blue:#2563eb; --purple:#7c3aed;
+  --text:#f0ede8; --text-muted:#888880; --text-dim:#555550;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--text);font-family:'Barlow',sans-serif;font-weight:400;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:0.35;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:rgba(10,10,10,0.92);border-bottom:1px solid var(--border);backdrop-filter:blur(8px);}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.12em;}
+.nav-logo span{color:var(--red);}
+.nav-links{display:flex;gap:2rem;align-items:center;}
+.nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--text);}
+.nav-cta{background:var(--red)!important;color:#fff!important;padding:0.5rem 1.2rem;font-family:'Barlow Condensed',sans-serif!important;font-size:0.85rem!important;font-weight:700!important;letter-spacing:0.14em!important;text-transform:uppercase!important;border:none;cursor:pointer;text-decoration:none;transition:background 0.2s!important;}
+.nav-cta:hover{background:#c02020!important;}
+.nav-admin-btn{background:transparent;color:var(--text-dim);padding:0.5rem 0.9rem;font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;border:1px solid var(--border);cursor:pointer;transition:all 0.2s;}
+.nav-admin-btn:hover{border-color:var(--border-bright);color:var(--text-muted);}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:8rem 3rem 4rem;position:relative;overflow:hidden;}
+.hero::after{content:'75';font-family:'Bebas Neue',sans-serif;font-size:52vw;color:rgba(224,48,48,0.03);position:absolute;right:-8vw;top:50%;transform:translateY(-50%);pointer-events:none;line-height:1;letter-spacing:-0.04em;}
+.hero-left{position:relative;z-index:2;}
+.hero-tag{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--red);border:1px solid var(--red-dark);padding:0.35rem 0.9rem;margin-bottom:1.8rem;}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,10vw,10rem);line-height:0.9;letter-spacing:0.04em;color:var(--text);margin-bottom:1.2rem;}
+.hero h1 .hard{color:var(--red);}
+.hero-sub{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:300;letter-spacing:0.06em;color:var(--text-muted);line-height:1.5;max-width:480px;margin-bottom:2.5rem;}
+.hero-sub strong{color:var(--text);font-weight:600;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--red);color:#fff;padding:1rem 2.4rem;font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:background 0.2s,transform 0.1s;}
+.btn-primary:hover{background:#c02020;transform:translateY(-2px);}
+.btn-secondary{background:transparent;color:var(--text);padding:1rem 2.4rem;font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;border:1px solid var(--border-bright);cursor:pointer;text-decoration:none;display:inline-block;transition:border-color 0.2s;}
+.btn-secondary:hover{border-color:var(--text-muted);}
+.hero-right{display:flex;justify-content:center;align-items:center;position:relative;z-index:2;}
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);width:100%;max-width:400px;}
+.stat-box{background:var(--card-bg);padding:2rem 1.5rem;text-align:center;}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:var(--red);line-height:1;letter-spacing:0.04em;}
+.stat-label{font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-top:0.4rem;}
+
+/* SECTIONS */
+section{padding:6rem 3rem;}
+.section-tag{font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--red);margin-bottom:0.8rem;}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,6vw,5.5rem);letter-spacing:0.04em;line-height:0.95;color:var(--text);margin-bottom:1.5rem;}
+.section-sub{font-family:'Barlow',sans-serif;font-size:1.05rem;color:var(--text-muted);line-height:1.7;max-width:560px;}
+
+/* RULES */
+#rules{background:var(--near-black);}
+.rules-header{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-bottom:4rem;align-items:end;}
+.rules-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);}
+.rule-card{background:var(--card-bg);padding:2.5rem 2rem;position:relative;overflow:hidden;transition:background 0.2s;}
+.rule-card:hover{background:#1c1c1c;}
+.rule-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--red);transform:scaleY(0);transform-origin:bottom;transition:transform 0.3s ease;}
+.rule-card:hover::before{transform:scaleY(1);}
+.rule-number{font-family:'Bebas Neue',sans-serif;font-size:4rem;color:rgba(224,48,48,0.12);line-height:1;margin-bottom:1rem;letter-spacing:0.04em;}
+.rule-icon{font-size:1.8rem;margin-bottom:1rem;display:block;}
+.rule-title{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:0.06em;color:var(--text);margin-bottom:0.8rem;}
+.rule-desc{font-size:0.9rem;color:var(--text-muted);line-height:1.65;}
+.rule-badge{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--red);border:1px solid var(--red-dark);padding:0.25rem 0.7rem;margin-top:1rem;}
+
+/* TRACKER */
+#tracker{background:var(--black);}
+.tracker-inner{display:grid;grid-template-columns:1fr 1.6fr;gap:4rem;align-items:start;margin-top:3rem;}
+.day-form{background:var(--card-bg);border:1px solid var(--border);padding:2rem;}
+.form-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.06em;margin-bottom:0.3rem;}
+.form-day-label{font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--red);margin-bottom:1.5rem;}
+.task-check{display:flex;align-items:flex-start;gap:1rem;padding:1.1rem 0.5rem;border-bottom:1px solid var(--border);cursor:pointer;transition:background 0.15s;border-radius:2px;margin:0 -0.5rem;}
+.task-check:last-of-type{border-bottom:none;}
+.task-check:hover{background:rgba(255,255,255,0.03);}
+.task-check input[type="checkbox"]{appearance:none;width:22px;height:22px;min-width:22px;border:2px solid var(--border-bright);background:transparent;cursor:pointer;position:relative;margin-top:1px;transition:border-color 0.2s,background 0.2s;}
+.task-check input[type="checkbox"]:checked{background:var(--red);border-color:var(--red);}
+.task-check input[type="checkbox"]:checked::after{content:'✓';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:0.75rem;font-weight:700;}
+.task-info{flex:1;}
+.task-name{font-family:'Barlow Condensed',sans-serif;font-size:1.05rem;font-weight:600;letter-spacing:0.04em;color:var(--text);margin-bottom:0.2rem;transition:color 0.2s;}
+.task-check:has(input:checked) .task-name{color:var(--text-muted);text-decoration:line-through;}
+.task-detail{font-size:0.8rem;color:var(--text-dim);line-height:1.4;}
+.progress-bar-wrap{margin:1.5rem 0 0.5rem;height:4px;background:var(--border);}
+.progress-bar-fill{height:100%;background:var(--red);transition:width 0.4s ease;width:0%;}
+.progress-label{display:flex;justify-content:space-between;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-top:0.5rem;}
+.save-btn{width:100%;margin-top:1.5rem;background:var(--red);color:#fff;padding:0.95rem;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.14em;border:none;cursor:pointer;transition:background 0.2s;}
+.save-btn:hover{background:#c02020;}
+.restart-btn{width:100%;margin-top:0.6rem;background:transparent;color:var(--text-dim);padding:0.7rem;font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;border:1px solid var(--border);cursor:pointer;transition:color 0.2s,border-color 0.2s;}
+.restart-btn:hover{color:var(--text-muted);border-color:var(--border-bright);}
+
+/* SELFIE PANEL */
+.selfie-panel{background:var(--card-bg);border:1px solid var(--border);padding:1.5rem;margin-top:1rem;}
+.selfie-title{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.06em;margin-bottom:0.3rem;}
+.selfie-sub{font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem;}
+.selfie-privacy-row{display:flex;gap:0.6rem;margin-bottom:1rem;}
+.privacy-btn{flex:1;padding:0.6rem 0.5rem;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;background:transparent;border:1px solid var(--border);color:var(--text-dim);cursor:pointer;transition:all 0.2s;}
+.privacy-btn.active-private{background:rgba(124,58,237,0.15);border-color:#7c3aed;color:#a78bfa;}
+.privacy-btn.active-shared{background:rgba(37,99,235,0.15);border-color:#2563eb;color:#60a5fa;}
+.selfie-upload-area{border:2px dashed var(--border-bright);padding:1.5rem;text-align:center;cursor:pointer;transition:border-color 0.2s;position:relative;}
+.selfie-upload-area:hover{border-color:var(--text-dim);}
+.selfie-upload-area input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.selfie-upload-icon{font-size:2rem;margin-bottom:0.5rem;}
+.selfie-upload-text{font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;letter-spacing:0.08em;color:var(--text-muted);}
+.selfie-preview{width:100%;max-height:200px;object-fit:cover;display:none;margin-top:0.8rem;}
+.selfie-preview.show{display:block;}
+.selfie-privacy-badge{display:inline-flex;align-items:center;gap:0.4rem;font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:0.25rem 0.7rem;margin-top:0.6rem;}
+.selfie-privacy-badge.private{background:rgba(124,58,237,0.15);color:#a78bfa;border:1px solid rgba(124,58,237,0.3);}
+.selfie-privacy-badge.shared{background:rgba(37,99,235,0.15);color:#60a5fa;border:1px solid rgba(37,99,235,0.3);}
+
+/* CALENDAR SIDE */
+.day-counter-display{background:var(--card-bg);border:1px solid var(--border);padding:2rem;text-align:center;}
+.current-day-num{font-family:'Bebas Neue',sans-serif;font-size:6rem;line-height:1;color:var(--red);letter-spacing:0.04em;}
+.current-day-label{font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);margin-top:0.3rem;}
+.streak-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);border-top:1px solid var(--border);margin-top:1.5rem;}
+.streak-item{background:var(--card-bg);padding:1rem;text-align:center;}
+.streak-num{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--text);letter-spacing:0.04em;}
+.streak-label{font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);margin-top:0.2rem;}
+.cal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;margin-top:2rem;}
+.cal-title{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.06em;}
+.cal-meta{font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);}
+.day-grid{display:grid;grid-template-columns:repeat(15,1fr);gap:3px;}
+.day-cell{aspect-ratio:1;border:1px solid var(--border);background:var(--card-bg);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;font-weight:600;letter-spacing:0.05em;color:var(--text-dim);cursor:pointer;transition:border-color 0.2s,background 0.2s;}
+.day-cell:hover{border-color:var(--border-bright);background:#1c1c1c;}
+.day-cell.complete{background:rgba(22,163,74,0.15);border-color:rgba(22,163,74,0.4);color:#22c55e;}
+.day-cell.partial{background:rgba(217,119,6,0.1);border-color:rgba(217,119,6,0.3);color:var(--amber);}
+.day-cell.missed{background:rgba(224,48,48,0.08);border-color:rgba(224,48,48,0.25);color:var(--red);}
+.day-cell.today{border-color:var(--red);box-shadow:0 0 0 1px var(--red);}
+.day-cell.future{opacity:0.3;cursor:default;}
+.legend{display:flex;gap:1.5rem;margin-top:1rem;flex-wrap:wrap;}
+.legend-item{display:flex;align-items:center;gap:0.4rem;font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);}
+.legend-dot{width:10px;height:10px;border:1px solid;}
+.legend-dot.c{background:rgba(22,163,74,0.2);border-color:rgba(22,163,74,0.5);}
+.legend-dot.p{background:rgba(217,119,6,0.15);border-color:rgba(217,119,6,0.4);}
+.legend-dot.m{background:rgba(224,48,48,0.1);border-color:rgba(224,48,48,0.3);}
+
+/* BUDDY SYSTEM */
+#buddy{background:var(--near-black);border-top:1px solid var(--border);}
+.buddy-layout{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem;}
+.buddy-card{background:var(--card-bg);border:1px solid var(--border);padding:2rem;}
+.buddy-card-title{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:0.06em;margin-bottom:0.4rem;}
+.buddy-card-sub{font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.5rem;}
+.input-row{display:flex;gap:0.6rem;margin-bottom:1rem;}
+.text-input{flex:1;background:var(--black);border:1px solid var(--border-bright);color:var(--text);padding:0.75rem 1rem;font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;letter-spacing:0.04em;outline:none;transition:border-color 0.2s;}
+.text-input:focus{border-color:var(--red);}
+.text-input::placeholder{color:var(--text-dim);}
+.mini-btn{background:var(--red);color:#fff;padding:0.75rem 1.2rem;font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border:none;cursor:pointer;white-space:nowrap;transition:background 0.2s;}
+.mini-btn:hover{background:#c02020;}
+.mini-btn.secondary{background:transparent;color:var(--text-muted);border:1px solid var(--border-bright);}
+.mini-btn.secondary:hover{border-color:var(--text-muted);}
+.buddy-list{display:flex;flex-direction:column;gap:1px;background:var(--border);}
+.buddy-item{background:var(--card-bg);padding:1rem 1.2rem;display:flex;align-items:center;gap:1rem;}
+.buddy-avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.06em;flex-shrink:0;}
+.buddy-avatar.color-0{background:rgba(224,48,48,0.15);color:#f87171;}
+.buddy-avatar.color-1{background:rgba(37,99,235,0.15);color:#60a5fa;}
+.buddy-avatar.color-2{background:rgba(22,163,74,0.15);color:#4ade80;}
+.buddy-avatar.color-3{background:rgba(217,119,6,0.15);color:#fbbf24;}
+.buddy-avatar.color-4{background:rgba(124,58,237,0.15);color:#a78bfa;}
+.buddy-info{flex:1;}
+.buddy-name{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:600;letter-spacing:0.04em;color:var(--text);}
+.buddy-meta{font-size:0.78rem;color:var(--text-dim);}
+.buddy-streak{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--red);letter-spacing:0.04em;}
+.buddy-streak-label{font-family:'Barlow Condensed',sans-serif;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);text-align:center;}
+.buddy-remove{background:none;border:none;color:var(--text-dim);cursor:pointer;font-size:1rem;padding:0.3rem;transition:color 0.2s;}
+.buddy-remove:hover{color:var(--red);}
+.buddy-empty{padding:2rem;text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;letter-spacing:0.08em;color:var(--text-dim);}
+.feed-item{background:var(--card-bg);padding:1rem 1.2rem;border-bottom:1px solid var(--border);display:flex;gap:0.8rem;align-items:flex-start;}
+.feed-item:last-child{border-bottom:none;}
+.feed-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+.feed-dot.complete{background:var(--green-bright);}
+.feed-dot.partial{background:var(--amber);}
+.feed-text{font-size:0.85rem;color:var(--text-muted);line-height:1.5;}
+.feed-time{font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.1em;color:var(--text-dim);margin-top:0.2rem;}
+
+/* PHOTO GALLERY */
+.photo-gallery{margin-top:2rem;}
+.gallery-title{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.06em;margin-bottom:0.3rem;}
+.gallery-sub{font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem;}
+.gallery-filter{display:flex;gap:0.5rem;margin-bottom:1rem;}
+.filter-btn{background:transparent;color:var(--text-muted);padding:0.4rem 0.9rem;font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;border:1px solid var(--border);cursor:pointer;transition:all 0.2s;}
+.filter-btn.active{background:rgba(224,48,48,0.12);border-color:var(--red-dark);color:var(--red);}
+.photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:4px;}
+.photo-thumb{aspect-ratio:1;overflow:hidden;position:relative;cursor:pointer;background:var(--card-bg);border:1px solid var(--border);}
+.photo-thumb img{width:100%;height:100%;object-fit:cover;transition:transform 0.3s;}
+.photo-thumb:hover img{transform:scale(1.05);}
+.photo-thumb-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity 0.2s;}
+.photo-thumb:hover .photo-thumb-overlay{opacity:1;}
+.photo-thumb-day{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:#fff;letter-spacing:0.06em;}
+.photo-thumb-privacy{font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.7);}
+.photo-lock{position:absolute;top:4px;right:4px;font-size:0.75rem;}
+.photo-empty{padding:3rem;text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;letter-spacing:0.08em;color:var(--text-dim);border:2px dashed var(--border);}
+
+/* ADMIN PANEL */
+.admin-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:500;overflow-y:auto;display:none;}
+.admin-overlay.open{display:block;}
+.admin-inner{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.admin-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:3rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);}
+.admin-logo{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:0.08em;}
+.admin-logo span{color:var(--red);}
+.admin-close{background:transparent;color:var(--text-muted);padding:0.6rem 1.2rem;font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;border:1px solid var(--border-bright);cursor:pointer;transition:all 0.2s;}
+.admin-close:hover{color:var(--text);}
+.admin-tabs{display:flex;gap:1px;background:var(--border);margin-bottom:2.5rem;}
+.admin-tab{flex:1;background:var(--card-bg);padding:0.9rem;font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);border:none;cursor:pointer;transition:all 0.2s;text-align:center;}
+.admin-tab:hover{background:#1c1c1c;color:var(--text);}
+.admin-tab.active{background:rgba(224,48,48,0.12);color:var(--red);}
+.admin-section{display:none;}
+.admin-section.active{display:block;}
+.admin-section-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.06em;margin-bottom:0.4rem;}
+.admin-section-sub{font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:2rem;}
+.form-group{margin-bottom:1.2rem;}
+.form-label{font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.5rem;display:block;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.admin-input{width:100%;background:var(--black);border:1px solid var(--border-bright);color:var(--text);padding:0.75rem 1rem;font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;letter-spacing:0.04em;outline:none;transition:border-color 0.2s;}
+.admin-input:focus{border-color:var(--red);}
+.admin-select{width:100%;background:var(--black);border:1px solid var(--border-bright);color:var(--text);padding:0.75rem 1rem;font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;letter-spacing:0.04em;outline:none;cursor:pointer;}
+.admin-save-btn{background:var(--red);color:#fff;padding:0.9rem 2.5rem;font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.14em;border:none;cursor:pointer;transition:background 0.2s;margin-top:1rem;}
+.admin-save-btn:hover{background:#c02020;}
+
+/* TASK EDITOR */
+.task-editor-list{display:flex;flex-direction:column;gap:1px;background:var(--border);margin-bottom:1.5rem;}
+.task-editor-item{background:var(--card-bg);padding:1.2rem;display:grid;grid-template-columns:auto 1fr 1fr auto;gap:0.8rem;align-items:center;}
+.task-num{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:rgba(224,48,48,0.4);letter-spacing:0.06em;width:28px;}
+.task-editor-input{background:var(--black);border:1px solid var(--border-bright);color:var(--text);padding:0.6rem 0.8rem;font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;letter-spacing:0.04em;outline:none;transition:border-color 0.2s;width:100%;}
+.task-editor-input:focus{border-color:var(--red);}
+.task-detail-input{background:var(--black);border:1px solid var(--border);color:var(--text-muted);padding:0.6rem 0.8rem;font-family:'Barlow',sans-serif;font-size:0.82rem;outline:none;width:100%;}
+.task-detail-input:focus{border-color:var(--border-bright);}
+.task-delete-btn{background:none;border:1px solid var(--border);color:var(--text-dim);padding:0.5rem 0.7rem;cursor:pointer;font-size:0.9rem;transition:all 0.2s;}
+.task-delete-btn:hover{border-color:var(--red);color:var(--red);}
+.add-task-btn{background:transparent;color:var(--text-muted);padding:0.75rem;font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;border:2px dashed var(--border-bright);cursor:pointer;width:100%;transition:all 0.2s;margin-bottom:1.5rem;}
+.add-task-btn:hover{border-color:var(--text-dim);color:var(--text);}
+
+/* TOGGLE SWITCH */
+.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;border-bottom:1px solid var(--border);}
+.toggle-row:last-child{border-bottom:none;}
+.toggle-info{}
+.toggle-label{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:600;letter-spacing:0.04em;color:var(--text);}
+.toggle-desc{font-size:0.8rem;color:var(--text-dim);margin-top:0.2rem;}
+.toggle-switch{position:relative;width:44px;height:24px;cursor:pointer;}
+.toggle-switch input{opacity:0;width:0;height:0;}
+.toggle-track{position:absolute;inset:0;background:var(--border-bright);transition:background 0.3s;border-radius:12px;}
+.toggle-track::before{content:'';position:absolute;width:18px;height:18px;border-radius:50%;background:#fff;top:3px;left:3px;transition:transform 0.3s;}
+.toggle-switch input:checked + .toggle-track{background:var(--red);}
+.toggle-switch input:checked + .toggle-track::before{transform:translateX(20px);}
+
+/* CHALLENGE CONFIG */
+.config-preview{background:var(--near-black);border:1px solid var(--border);padding:1.5rem;margin-top:1.5rem;}
+.config-preview-title{font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:0.8rem;}
+.config-stat-row{display:flex;gap:2rem;flex-wrap:wrap;}
+.config-stat{text-align:center;}
+.config-stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--red);letter-spacing:0.04em;line-height:1;}
+.config-stat-label{font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-dim);}
+
+/* MINDSET */
+#mindset{background:var(--near-black);border-top:1px solid var(--border);}
+.quote-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-top:3rem;}
+.quote-card{background:var(--card-bg);padding:2.5rem 2rem;}
+.quote-mark{font-family:'Bebas Neue',sans-serif;font-size:5rem;color:rgba(224,48,48,0.1);line-height:0.8;margin-bottom:0.5rem;}
+.quote-text{font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;font-weight:600;letter-spacing:0.03em;line-height:1.5;color:var(--text);margin-bottom:1rem;}
+.quote-attr{font-size:0.78rem;color:var(--text-dim);letter-spacing:0.1em;text-transform:uppercase;}
+
+/* FAQ */
+#faq{background:var(--black);}
+.faq-list{max-width:760px;margin-top:3rem;}
+.faq-item{border-bottom:1px solid var(--border);}
+.faq-q{padding:1.5rem 0;font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:600;letter-spacing:0.04em;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;}
+.faq-icon{font-size:1.2rem;color:var(--red);transition:transform 0.3s;min-width:20px;text-align:center;}
+.faq-item.open .faq-icon{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s ease;}
+.faq-item.open .faq-a{max-height:300px;}
+.faq-a-inner{padding-bottom:1.5rem;font-size:0.92rem;color:var(--text-muted);line-height:1.7;}
+
+/* FOOTER */
+footer{background:var(--near-black);border-top:1px solid var(--border);padding:3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:0.12em;}
+.footer-logo span{color:var(--red);}
+.footer-copy{font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;letter-spacing:0.1em;color:var(--text-dim);text-transform:uppercase;}
+
+/* TOAST */
+#toast{position:fixed;bottom:2rem;right:2rem;background:var(--card-bg);border:1px solid var(--border);border-left:3px solid var(--green-bright);padding:1rem 1.5rem;font-family:'Barlow Condensed',sans-serif;font-size:1rem;letter-spacing:0.06em;color:var(--text);z-index:600;transform:translateX(120%);transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);max-width:300px;}
+#toast.show{transform:translateX(0);}
+
+/* MODALS */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:300;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s;}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal-box{background:var(--card-bg);border:1px solid var(--border-bright);padding:2.5rem;max-width:480px;width:90%;position:relative;transform:translateY(20px);transition:transform 0.3s;}
+.modal-overlay.open .modal-box{transform:translateY(0);}
+.modal-title{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:0.06em;margin-bottom:0.6rem;}
+.modal-text{font-size:0.9rem;color:var(--text-muted);line-height:1.6;margin-bottom:1.5rem;}
+.modal-input{background:var(--black);border:1px solid var(--border-bright);color:var(--text);padding:0.8rem 1rem;font-family:'Barlow Condensed',sans-serif;font-size:1rem;letter-spacing:0.06em;width:100%;margin-bottom:1.2rem;outline:none;}
+.modal-input:focus{border-color:var(--red);}
+.modal-btns{display:flex;gap:0.8rem;}
+.modal-close-btn{position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--text-dim);font-size:1.2rem;cursor:pointer;transition:color 0.2s;}
+.modal-close-btn:hover{color:var(--text);}
+
+/* PHOTO LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:400;display:none;align-items:center;justify-content:center;flex-direction:column;}
+.lightbox.open{display:flex;}
+.lightbox-img{max-width:90vw;max-height:75vh;object-fit:contain;}
+.lightbox-info{margin-top:1rem;text-align:center;}
+.lightbox-day{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--text);letter-spacing:0.06em;}
+.lightbox-meta{font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);}
+.lightbox-close{position:absolute;top:1.5rem;right:2rem;background:none;border:none;color:var(--text-muted);font-size:2rem;cursor:pointer;}
+.lightbox-privacy{display:inline-flex;align-items:center;gap:0.4rem;font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:0.3rem 0.9rem;margin-top:0.5rem;}
+.lightbox-privacy.private{background:rgba(124,58,237,0.15);color:#a78bfa;border:1px solid rgba(124,58,237,0.3);}
+.lightbox-privacy.shared{background:rgba(37,99,235,0.15);color:#60a5fa;border:1px solid rgba(37,99,235,0.3);}
+.lightbox-actions{margin-top:1rem;display:flex;gap:0.8rem;}
+
+/* ADMIN PASSWORD */
+.admin-lock{text-align:center;padding:4rem 2rem;}
+.admin-lock-icon{font-size:4rem;margin-bottom:1rem;}
+.admin-lock-title{font-family:'Bebas Neue',sans-serif;font-size:3rem;letter-spacing:0.06em;margin-bottom:0.5rem;}
+.admin-lock-sub{font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:2rem;}
+.admin-lock-form{display:flex;gap:0.8rem;justify-content:center;max-width:360px;margin:0 auto;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}
+  .nav-links{display:none;}
+  .hero{grid-template-columns:1fr;padding:7rem 1.5rem 3rem;gap:3rem;}
+  .hero::after{display:none;}
+  .rules-header{grid-template-columns:1fr;gap:1.5rem;}
+  .tracker-inner{grid-template-columns:1fr;gap:2rem;}
+  .buddy-layout{grid-template-columns:1fr;gap:2rem;}
+  .form-row{grid-template-columns:1fr;}
+  .task-editor-item{grid-template-columns:auto 1fr;grid-template-rows:auto auto;}
+  section{padding:4rem 1.5rem;}
+  .day-grid{grid-template-columns:repeat(10,1fr);}
+  footer{flex-direction:column;text-align:center;}
+  .admin-inner{padding:2rem 1rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">75<span>HARD</span></div>
+  <div class="nav-links">
+    <a href="#rules">Rules</a>
+    <a href="#tracker">Tracker</a>
+    <a href="#buddy">Buddies</a>
+    <a href="#mindset">Mindset</a>
+    <a href="#faq">FAQ</a>
+    <button class="nav-admin-btn" onclick="openAdmin()">⚙ Admin</button>
+    <a href="#tracker" class="nav-cta">Start Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Mental Toughness Program</div>
+    <h1>75<br><span class="hard">HARD</span></h1>
+    <p class="hero-sub" id="hero-sub-text">75 days. 5 non-negotiable tasks. <strong>Zero excuses.</strong> Miss one task and you start over from Day 1. This is not a fitness program — it's a war on weakness.</p>
+    <div class="hero-btns">
+      <a href="#tracker" class="btn-primary">Begin the Challenge</a>
+      <a href="#rules" class="btn-secondary">The Rules</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stats">
+      <div class="stat-box">
+        <div class="stat-num" id="hero-days">75</div>
+        <div class="stat-label">Days</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" id="hero-tasks">5</div>
+        <div class="stat-label">Daily Tasks</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">0</div>
+        <div class="stat-label">Exceptions</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Restarts if Failed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RULES (dynamic) -->
+<section id="rules">
+  <div class="rules-header">
+    <div>
+      <div class="section-tag">The Non-Negotiables</div>
+      <h2 class="section-title" id="rules-title">The Rules.<br>No Exceptions.</h2>
+    </div>
+    <div>
+      <p class="section-sub" id="rules-sub">Every single day for the full challenge. Skip even one and you restart from Day 1 — no partial credit, no excuses, no modifications.</p>
+    </div>
+  </div>
+  <div class="rules-grid" id="rules-grid"></div>
+</section>
+
+<!-- TRACKER -->
+<section id="tracker">
+  <div class="section-tag">Day-by-Day Accountability</div>
+  <h2 class="section-title">Your Tracker</h2>
+  <div class="tracker-inner">
+    <div>
+      <div class="day-form">
+        <div class="form-title">Log Today</div>
+        <div class="form-day-label" id="form-day-label">Day 1</div>
+        <div id="tasks-container"></div>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progress-fill"></div></div>
+        <div class="progress-label"><span id="tasks-done">0 / 0 tasks</span><span id="pct-done">0%</span></div>
+        <button class="save-btn" onclick="saveDay()">Save Day</button>
+        <button class="restart-btn" onclick="openRestartModal()">↺ Restart Challenge</button>
+      </div>
+
+      <!-- SELFIE PANEL -->
+      <div class="selfie-panel" id="selfie-panel">
+        <div class="selfie-title">📸 Progress Photo</div>
+        <div class="selfie-sub" id="selfie-mode-label">Daily accountability photo</div>
+        <div class="selfie-privacy-row" id="selfie-privacy-row">
+          <button class="privacy-btn active-private" id="btn-private" onclick="setPrivacy('private')">🔒 Private</button>
+          <button class="privacy-btn" id="btn-shared" onclick="setPrivacy('shared')">👥 Shared with Buddies</button>
+        </div>
+        <div class="selfie-upload-area" onclick="document.getElementById('selfie-input').click()">
+          <input type="file" id="selfie-input" accept="image/*" onchange="handleSelfieUpload(event)">
+          <div class="selfie-upload-icon" id="selfie-icon">📷</div>
+          <div class="selfie-upload-text" id="selfie-upload-text">Tap to upload today's photo</div>
+        </div>
+        <img id="selfie-preview" class="selfie-preview" src="" alt="Today's photo">
+        <div id="selfie-badge"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="day-counter-display">
+        <div class="current-day-num" id="current-day-num">1</div>
+        <div class="current-day-label" id="day-of-label">Current Day</div>
+        <div class="streak-row">
+          <div class="streak-item"><div class="streak-num" id="streak-complete">0</div><div class="streak-label">Perfect Days</div></div>
+          <div class="streak-item"><div class="streak-num" id="streak-remaining">75</div><div class="streak-label">Days Left</div></div>
+          <div class="streak-item"><div class="streak-num" id="streak-pct">0%</div><div class="streak-label">Complete</div></div>
+        </div>
+      </div>
+
+      <div class="cal-header">
+        <div class="cal-title" id="cal-title">Challenge Calendar</div>
+        <div class="cal-meta" id="start-date-label">Not started</div>
+      </div>
+      <div class="day-grid" id="day-grid"></div>
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot c"></div>Complete</div>
+        <div class="legend-item"><div class="legend-dot p"></div>Partial</div>
+        <div class="legend-item"><div class="legend-dot m"></div>Missed</div>
+      </div>
+
+      <!-- PHOTO GALLERY -->
+      <div class="photo-gallery" id="photo-gallery">
+        <div class="gallery-title">Photo Archive</div>
+        <div class="gallery-sub">Your daily progress photos</div>
+        <div class="gallery-filter">
+          <button class="filter-btn active" onclick="filterPhotos('all',this)">All</button>
+          <button class="filter-btn" onclick="filterPhotos('private',this)">🔒 Private</button>
+          <button class="filter-btn" onclick="filterPhotos('shared',this)">👥 Shared</button>
+        </div>
+        <div class="photo-grid" id="photo-grid"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUDDY SYSTEM -->
+<section id="buddy">
+  <div class="section-tag">Accountability Partners</div>
+  <h2 class="section-title">Buddy System</h2>
+  <p class="section-sub">Add accountability buddies to track each other's progress and stay motivated together.</p>
+  <div class="buddy-layout">
+    <div>
+      <div class="buddy-card">
+        <div class="buddy-card-title">Add a Buddy</div>
+        <div class="buddy-card-sub">Enter their name to add them</div>
+        <div class="input-row">
+          <input type="text" class="text-input" id="buddy-name-input" placeholder="Buddy's name..." onkeydown="if(event.key==='Enter')addBuddy()">
+          <button class="mini-btn" onclick="addBuddy()">Add</button>
+        </div>
+        <div class="input-row">
+          <input type="number" class="text-input" id="buddy-days-input" placeholder="Days completed (0-75)" min="0" max="75" style="max-width:200px;">
+          <select class="text-input admin-select" id="buddy-status-input" style="max-width:160px;">
+            <option value="active">Active</option>
+            <option value="completed">Completed</option>
+            <option value="restart">Restarted</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="buddy-card" style="margin-top:1rem;">
+        <div class="buddy-card-title">Activity Feed</div>
+        <div class="buddy-card-sub">Recent buddy updates</div>
+        <div id="buddy-feed"></div>
+      </div>
+    </div>
+
+    <div class="buddy-card">
+      <div class="buddy-card-title">Your Squad</div>
+      <div class="buddy-card-sub" id="squad-count">0 accountability partners</div>
+      <div class="buddy-list" id="buddy-list"></div>
+    </div>
+  </div>
+</section>
+
+<!-- MINDSET -->
+<section id="mindset">
+  <div class="section-tag">Fuel the Fire</div>
+  <h2 class="section-title">Mindset Fuel</h2>
+  <div class="quote-grid">
+    <div class="quote-card"><div class="quote-mark">"</div><p class="quote-text">The only person you are destined to become is the person you decide to be.</p><div class="quote-attr">— Ralph Waldo Emerson</div></div>
+    <div class="quote-card"><div class="quote-mark">"</div><p class="quote-text">Self-discipline is the definition of self-love. If you really love yourself, you will do the things that are required.</p><div class="quote-attr">— Andy Frisella</div></div>
+    <div class="quote-card"><div class="quote-mark">"</div><p class="quote-text">Discipline is doing what needs to be done, even when you don't feel like doing it. Every. Single. Day.</p><div class="quote-attr">— Jocko Willink</div></div>
+    <div class="quote-card"><div class="quote-mark">"</div><p class="quote-text">You will never always be motivated. You have to learn to be disciplined. Motivation is a spark — discipline is the engine.</p><div class="quote-attr">— Unknown</div></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-tag">Common Questions</div>
+  <h2 class="section-title">FAQ</h2>
+  <div class="faq-list">
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What happens if I miss one task?<span class="faq-icon">+</span></div><div class="faq-a"><div class="faq-a-inner">You start over from Day 1 — no exceptions. Missing even one task on any single day means a full restart. That's the entire point.</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can the admin customize the tasks?<span class="faq-icon">+</span></div><div class="faq-a"><div class="faq-a-inner">Yes! Click the Admin button in the nav to open the admin panel. You can add, remove, and rename tasks, set the challenge duration, configure selfie privacy defaults, and manage buddies. The default admin password is "admin123".</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Are my progress photos private?<span class="faq-icon">+</span></div><div class="faq-a"><div class="faq-a-inner">Photos are stored locally in your browser only — they never upload to any server. You can mark each photo as Private (only you) or Shared (visible in the buddy feed if you choose to share). The admin can set the default privacy mode.</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I change the challenge length?<span class="faq-icon">+</span></div><div class="faq-a"><div class="faq-a-inner">Yes — in the Admin Panel, go to Challenge Settings and set your desired number of days (1–365). The calendar and stats update automatically.</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I add custom tasks like "Read Quran" or "Pray Namaz"?<span class="faq-icon">+</span></div><div class="faq-a"><div class="faq-a-inner">Open the Admin Panel → Tasks tab. You can rename any existing task, edit its description, add new tasks, or remove tasks you don't need. Changes apply immediately to the tracker.</div></div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">75<span>HARD</span></div>
+  <div class="footer-copy">Customizable challenge tracker · Built for discipline</div>
+</footer>
+
+<!-- TOAST -->
+<div id="toast">✓ Saved</div>
+
+<!-- RESTART MODAL -->
+<div class="modal-overlay" id="restart-modal">
+  <div class="modal-box">
+    <button class="modal-close-btn" onclick="closeRestartModal()">✕</button>
+    <div class="modal-title">Start Challenge</div>
+    <p class="modal-text">Set your start date to begin or restart the challenge. All existing progress will be cleared.</p>
+    <input type="date" class="modal-input" id="start-date-input">
+    <div class="modal-btns">
+      <button class="btn-primary" onclick="confirmRestart()">Begin Challenge</button>
+      <button class="btn-secondary" onclick="closeRestartModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHOTO LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img class="lightbox-img" id="lightbox-img" src="" alt="Progress photo">
+  <div class="lightbox-info">
+    <div class="lightbox-day" id="lightbox-day">Day 1</div>
+    <div class="lightbox-meta" id="lightbox-date"></div>
+    <div id="lightbox-privacy-badge"></div>
+    <div class="lightbox-actions">
+      <button class="mini-btn secondary" onclick="togglePhotoPrivacy(currentLightboxKey)">Toggle Privacy</button>
+      <button class="mini-btn secondary" style="color:var(--red);border-color:var(--red-dark);" onclick="deletePhoto(currentLightboxKey)">Delete Photo</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN OVERLAY -->
+<div class="admin-overlay" id="admin-overlay">
+  <div class="admin-inner">
+
+    <!-- Lock Screen -->
+    <div id="admin-lock-screen">
+      <div class="admin-lock">
+        <div class="admin-lock-icon">🔐</div>
+        <div class="admin-lock-title">Admin Panel</div>
+        <div class="admin-lock-sub">Enter password to access settings</div>
+        <div class="admin-lock-form">
+          <input type="password" class="admin-input" id="admin-pw-input" placeholder="Password..." onkeydown="if(event.key==='Enter')checkAdminPw()" style="flex:1;">
+          <button class="mini-btn" onclick="checkAdminPw()">Enter</button>
+        </div>
+        <div style="margin-top:0.8rem;font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;color:var(--text-dim);letter-spacing:0.1em;">Default: admin123</div>
+        <button class="mini-btn secondary" onclick="closeAdmin()" style="margin-top:1.5rem;">✕ Close</button>
+      </div>
+    </div>
+
+    <!-- Admin Content -->
+    <div id="admin-content" style="display:none;">
+      <div class="admin-header">
+        <div class="admin-logo">Admin <span>Panel</span></div>
+        <button class="admin-close" onclick="closeAdmin()">✕ Close</button>
+      </div>
+      <div class="admin-tabs">
+        <button class="admin-tab active" onclick="switchAdminTab('tasks',this)">Tasks</button>
+        <button class="admin-tab" onclick="switchAdminTab('challenge',this)">Challenge</button>
+        <button class="admin-tab" onclick="switchAdminTab('selfie',this)">Photos</button>
+        <button class="admin-tab" onclick="switchAdminTab('security',this)">Security</button>
+      </div>
+
+      <!-- TASKS TAB -->
+      <div class="admin-section active" id="tab-tasks">
+        <div class="admin-section-title">Edit Tasks</div>
+        <div class="admin-section-sub">Add, remove, or rename daily tasks</div>
+        <div class="task-editor-list" id="task-editor-list"></div>
+        <button class="add-task-btn" onclick="addNewTask()">+ Add New Task</button>
+        <button class="admin-save-btn" onclick="saveTasks()">Save Tasks</button>
+      </div>
+
+      <!-- CHALLENGE TAB -->
+      <div class="admin-section" id="tab-challenge">
+        <div class="admin-section-title">Challenge Settings</div>
+        <div class="admin-section-sub">Configure duration and challenge name</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Challenge Name</label>
+            <input type="text" class="admin-input" id="cfg-name" placeholder="e.g. 75 Hard, 30 Clean, Ramadan Challenge">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Total Days</label>
+            <input type="number" class="admin-input" id="cfg-days" min="1" max="365" placeholder="75">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Challenge Description (Hero text)</label>
+          <input type="text" class="admin-input" id="cfg-desc" placeholder="Short motivational description...">
+        </div>
+        <div class="config-preview">
+          <div class="config-preview-title">Preview</div>
+          <div class="config-stat-row">
+            <div class="config-stat"><div class="config-stat-num" id="prev-days">75</div><div class="config-stat-label">Days</div></div>
+            <div class="config-stat"><div class="config-stat-num" id="prev-tasks">5</div><div class="config-stat-label">Tasks/Day</div></div>
+            <div class="config-stat"><div class="config-stat-num" id="prev-total">375</div><div class="config-stat-label">Total Completions</div></div>
+          </div>
+        </div>
+        <button class="admin-save-btn" onclick="saveChallengeCfg()">Save Settings</button>
+      </div>
+
+      <!-- SELFIE TAB -->
+      <div class="admin-section" id="tab-selfie">
+        <div class="admin-section-title">Photo Settings</div>
+        <div class="admin-section-sub">Configure progress photo behaviour</div>
+        <div class="toggle-row">
+          <div class="toggle-info">
+            <div class="toggle-label">Require Daily Photo</div>
+            <div class="toggle-desc">Make the daily photo a required task</div>
+          </div>
+          <label class="toggle-switch"><input type="checkbox" id="tog-require-photo" onchange="updatePhotoPreview()"><span class="toggle-track"></span></label>
+        </div>
+        <div class="toggle-row">
+          <div class="toggle-info">
+            <div class="toggle-label">Allow Privacy Choice</div>
+            <div class="toggle-desc">Let users choose private or shared per photo</div>
+          </div>
+          <label class="toggle-switch"><input type="checkbox" id="tog-privacy-choice" checked onchange="updatePhotoPreview()"><span class="toggle-track"></span></label>
+        </div>
+        <div class="toggle-row">
+          <div class="toggle-info">
+            <div class="toggle-label">Default: Private</div>
+            <div class="toggle-desc">New photos default to private mode</div>
+          </div>
+          <label class="toggle-switch"><input type="checkbox" id="tog-default-private" checked onchange="updatePhotoPreview()"><span class="toggle-track"></span></label>
+        </div>
+        <div class="toggle-row">
+          <div class="toggle-info">
+            <div class="toggle-label">Show Photo Gallery</div>
+            <div class="toggle-desc">Display archive grid in the tracker</div>
+          </div>
+          <label class="toggle-switch"><input type="checkbox" id="tog-show-gallery" checked onchange="updatePhotoPreview()"><span class="toggle-track"></span></label>
+        </div>
+        <button class="admin-save-btn" onclick="savePhotoCfg()">Save Photo Settings</button>
+      </div>
+
+      <!-- SECURITY TAB -->
+      <div class="admin-section" id="tab-security">
+        <div class="admin-section-title">Security</div>
+        <div class="admin-section-sub">Change admin password</div>
+        <div class="form-group">
+          <label class="form-label">Current Password</label>
+          <input type="password" class="admin-input" id="sec-current" placeholder="Current password">
+        </div>
+        <div class="form-group">
+          <label class="form-label">New Password</label>
+          <input type="password" class="admin-input" id="sec-new" placeholder="New password (min 4 chars)">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Confirm New Password</label>
+          <input type="password" class="admin-input" id="sec-confirm" placeholder="Repeat new password">
+        </div>
+        <button class="admin-save-btn" onclick="changePassword()">Change Password</button>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);">
+          <div class="admin-section-title" style="font-size:1.5rem;color:var(--red);">Danger Zone</div>
+          <div class="admin-section-sub">Irreversible actions</div>
+          <button onclick="clearAllData()" style="background:transparent;color:var(--red);padding:0.8rem 2rem;font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;border:1px solid var(--red-dark);cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background='rgba(224,48,48,0.1)'" onmouseout="this.style.background='transparent'">Clear All Data & Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════════════
+// STATE & DEFAULTS
+// ════════════════════════════════════════
+const DEFAULT_TASKS = [
+  {name:'Workout #1 (45 min+)', detail:'Any type — lifting, cardio, sport, martial arts'},
+  {name:'Workout #2 — Outdoors (45 min+)', detail:'Must be outside regardless of weather'},
+  {name:'Drink 1 Gallon of Water', detail:'128 oz plain water — coffee/tea don\'t count'},
+  {name:'Read 10 Pages', detail:'Non-fiction / self-improvement book only'},
+  {name:'Follow Your Diet / No Alcohol', detail:'Zero deviations from your chosen diet'},
+];
+
+const DEFAULT_CFG = {
+  name: '75 Hard',
+  totalDays: 75,
+  desc: '75 days. 5 non-negotiable tasks. Zero excuses. Miss one and start over.',
+  tasks: DEFAULT_TASKS,
+  photo: {
+    requirePhoto: false,
+    allowPrivacyChoice: true,
+    defaultPrivate: true,
+    showGallery: true
+  },
+  adminPw: 'admin123'
+};
+
+function loadCfg() {
+  try { return JSON.parse(localStorage.getItem('75hard_cfg')) || {...DEFAULT_CFG}; }
+  catch { return {...DEFAULT_CFG}; }
+}
+function saveCfg(c) { localStorage.setItem('75hard_cfg', JSON.stringify(c)); }
+
+function loadState() {
+  try { return JSON.parse(localStorage.getItem('75hard_state')) || {startDate:null,days:{},photos:{},buddies:[]}; }
+  catch { return {startDate:null,days:{},photos:{},buddies:[]}; }
+}
+function saveState() { localStorage.setItem('75hard_state', JSON.stringify(state)); }
+
+let cfg = loadCfg();
+let state = loadState();
+let currentPrivacy = cfg.photo.defaultPrivate ? 'private' : 'shared';
+let currentLightboxKey = null;
+let photoFilter = 'all';
+
+// ════════════════════════════════════════
+// HELPERS
+// ════════════════════════════════════════
+function dateKey(d) {
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+function todayKey() { return dateKey(new Date()); }
+function getDayIndex() {
+  if (!state.startDate) return 1;
+  const start = new Date(state.startDate); start.setHours(0,0,0,0);
+  const today = new Date(); today.setHours(0,0,0,0);
+  return Math.max(1, Math.min(Math.floor((today-start)/86400000)+1, cfg.totalDays));
+}
+function taskIds() { return cfg.tasks.map((_,i)=>'t'+i); }
+function isComplete(dayData) {
+  if (!dayData) return false;
+  return taskIds().every(id => dayData[id]);
+}
+
+// ════════════════════════════════════════
+// RENDER TRACKER TASKS
+// ════════════════════════════════════════
+function renderTasks() {
+  const c = document.getElementById('tasks-container');
+  c.innerHTML = '';
+  cfg.tasks.forEach((task,i) => {
+    const id = 't'+i;
+    const div = document.createElement('label');
+    div.className = 'task-check';
+    div.innerHTML = `
+      <input type="checkbox" id="${id}">
+      <div class="task-info">
+        <div class="task-name">${escapeHtml(task.name)}</div>
+        <div class="task-detail">${escapeHtml(task.detail||'')}</div>
+      </div>`;
+    c.appendChild(div);
+    div.querySelector('input').addEventListener('change', updateProgress);
+  });
+  loadTodayCheckboxes();
+}
+
+function escapeHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function loadTodayCheckboxes() {
+  const saved = state.days[todayKey()] || {};
+  taskIds().forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.checked = !!saved[id];
+  });
+  updateProgress();
+}
+
+function updateProgress() {
+  const ids = taskIds();
+  const done = ids.filter(id => { const el=document.getElementById(id); return el && el.checked; }).length;
+  const total = ids.length;
+  const pct = total ? Math.round((done/total)*100) : 0;
+  document.getElementById('progress-fill').style.width = pct+'%';
+  document.getElementById('tasks-done').textContent = `${done} / ${total} tasks`;
+  document.getElementById('pct-done').textContent = pct+'%';
+}
+
+// ════════════════════════════════════════
+// RENDER RULES SECTION
+// ════════════════════════════════════════
+function renderRules() {
+  document.getElementById('rules-title').innerHTML = cfg.name.toUpperCase()+'<br>No Exceptions.';
+  document.getElementById('rules-sub').textContent = `Every single day for ${cfg.totalDays} days. Skip even one and you restart from Day 1.`;
+  document.getElementById('hero-days').textContent = cfg.totalDays;
+  document.getElementById('hero-tasks').textContent = cfg.tasks.length;
+  document.getElementById('hero-sub-text').innerHTML = `${cfg.totalDays} days. ${cfg.tasks.length} non-negotiable tasks. <strong>Zero excuses.</strong> ${cfg.desc || ''}`;
+
+  const grid = document.getElementById('rules-grid');
+  grid.innerHTML = '';
+  const icons = ['🏋️','💧','📖','🥩','📸','🤲','🕌','🏃','📝','🎯'];
+  cfg.tasks.forEach((task,i) => {
+    grid.innerHTML += `
+      <div class="rule-card">
+        <div class="rule-number">0${i+1}</div>
+        <span class="rule-icon">${icons[i]||'✅'}</span>
+        <div class="rule-title">${escapeHtml(task.name)}</div>
+        <p class="rule-desc">${escapeHtml(task.detail||'')}</p>
+      </div>`;
+  });
+}
+
+// ════════════════════════════════════════
+// SAVE DAY
+// ════════════════════════════════════════
+function saveDay() {
+  const key = todayKey();
+  const data = {};
+  taskIds().forEach(id => { const el=document.getElementById(id); data[id] = el ? el.checked : false; });
+  state.days[key] = data;
+  saveState();
+  showToast('✓ Day saved!', 'green');
+  renderCalendar();
+  updateStats();
+  renderBuddyFeed();
+}
+
+// ════════════════════════════════════════
+// STATS
+// ════════════════════════════════════════
+function updateStats() {
+  const total = cfg.totalDays;
+  document.getElementById('day-of-label').textContent = `Day of ${total}`;
+  document.getElementById('streak-remaining').textContent = '~';
+
+  if (!state.startDate) {
+    document.getElementById('current-day-num').textContent = '1';
+    document.getElementById('streak-complete').textContent = '0';
+    document.getElementById('streak-remaining').textContent = total;
+    document.getElementById('streak-pct').textContent = '0%';
+    document.getElementById('start-date-label').textContent = 'Not started';
+    document.getElementById('form-day-label').textContent = 'Day 1';
+    return;
+  }
+  const dayIdx = getDayIndex();
+  const start = new Date(state.startDate);
+  let perfect = 0;
+  for (let i=0;i<dayIdx;i++) {
+    const d = new Date(start); d.setDate(d.getDate()+i);
+    if (isComplete(state.days[dateKey(d)])) perfect++;
+  }
+  document.getElementById('current-day-num').textContent = dayIdx;
+  document.getElementById('form-day-label').textContent = `Day ${dayIdx} of ${total}`;
+  document.getElementById('streak-complete').textContent = perfect;
+  document.getElementById('streak-remaining').textContent = Math.max(0, total-dayIdx+1);
+  document.getElementById('streak-pct').textContent = Math.round((perfect/total)*100)+'%';
+  const sf = new Date(state.startDate);
+  document.getElementById('start-date-label').textContent = `Started ${sf.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}`;
+  document.getElementById('cal-title').textContent = cfg.name+' Calendar';
+}
+
+// ════════════════════════════════════════
+// CALENDAR
+// ════════════════════════════════════════
+function renderCalendar() {
+  const grid = document.getElementById('day-grid');
+  grid.innerHTML = '';
+  const total = cfg.totalDays;
+  if (!state.startDate) {
+    for (let i=1;i<=total;i++) {
+      const c=document.createElement('div'); c.className='day-cell future';
+      c.innerHTML=`<span class="day-num">${i}</span>`; grid.appendChild(c);
+    }
+    return;
+  }
+  const start = new Date(state.startDate);
+  const today = new Date(); today.setHours(0,0,0,0);
+  for (let i=0;i<total;i++) {
+    const d=new Date(start); d.setDate(d.getDate()+i); d.setHours(0,0,0,0);
+    const key=dateKey(d); const dayData=state.days[key]; const n=i+1;
+    const cell=document.createElement('div');
+    cell.innerHTML=`<span class="day-num">${n}</span>`;
+    if (d>today) { cell.className='day-cell future'; }
+    else if (d.getTime()===today.getTime()) {
+      cell.className='day-cell today';
+      if (dayData) {
+        const done=taskIds().filter(id=>dayData[id]).length;
+        if (done===taskIds().length) cell.classList.add('complete');
+        else if (done>0) cell.classList.add('partial');
+      }
+    } else {
+      if (!dayData) cell.className='day-cell missed';
+      else {
+        const done=taskIds().filter(id=>dayData[id]).length;
+        cell.className = done===taskIds().length ? 'day-cell complete' : done>0 ? 'day-cell partial' : 'day-cell missed';
+      }
+    }
+    cell.title=`Day ${n} — ${d.toLocaleDateString('en-US',{month:'short',day:'numeric'})}`;
+    const hasPhoto = state.photos && state.photos[key];
+    if (hasPhoto) { const dot=document.createElement('span'); dot.style.cssText='position:absolute;bottom:2px;right:2px;width:4px;height:4px;border-radius:50%;background:#60a5fa;'; dot.style.position='absolute'; cell.style.position='relative'; cell.appendChild(dot); }
+    grid.appendChild(cell);
+  }
+}
+
+// ════════════════════════════════════════
+// SELFIE / PHOTO SYSTEM
+// ════════════════════════════════════════
+function initSelfiePanel() {
+  const p = cfg.photo;
+  // privacy choice visibility
+  document.getElementById('selfie-privacy-row').style.display = p.allowPrivacyChoice ? 'flex' : 'none';
+  if (!p.allowPrivacyChoice) {
+    currentPrivacy = p.defaultPrivate ? 'private' : 'shared';
+    const badge = currentPrivacy==='private' ?
+      `<div class="selfie-privacy-badge private">🔒 Private only</div>` :
+      `<div class="selfie-privacy-badge shared">👥 Shared with buddies</div>`;
+    document.getElementById('selfie-mode-label').innerHTML = 'Privacy set by admin · '+badge;
+  }
+  document.getElementById('photo-gallery').style.display = p.showGallery ? 'block' : 'none';
+  setPrivacy(p.defaultPrivate ? 'private' : 'shared', false);
+  // load today's existing photo
+  const key = todayKey();
+  if (state.photos && state.photos[key]) {
+    const ph = state.photos[key];
+    showSelfiePreview(ph.data);
+    setPrivacy(ph.privacy, false);
+    document.getElementById('selfie-upload-text').textContent = 'Photo saved for today — tap to replace';
+  }
+  renderPhotoGallery();
+}
+
+function setPrivacy(mode, updateDefault=true) {
+  currentPrivacy = mode;
+  if (updateDefault) {}
+  document.getElementById('btn-private').className = 'privacy-btn' + (mode==='private' ? ' active-private' : '');
+  document.getElementById('btn-shared').className  = 'privacy-btn' + (mode==='shared'  ? ' active-shared' : '');
+  const badge = document.getElementById('selfie-badge');
+  const img = document.getElementById('selfie-preview');
+  if (img.classList.contains('show')) {
+    badge.innerHTML = mode==='private'
+      ? `<div class="selfie-privacy-badge private">🔒 Private — only you can see this</div>`
+      : `<div class="selfie-privacy-badge shared">👥 Shared with your buddies</div>`;
+    // update saved photo privacy if exists
+    const key = todayKey();
+    if (state.photos && state.photos[key]) {
+      state.photos[key].privacy = mode;
+      saveState();
+    }
+  }
+}
+
+function handleSelfieUpload(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const data = ev.target.result;
+    const key = todayKey();
+    if (!state.photos) state.photos = {};
+    state.photos[key] = { data, privacy: currentPrivacy, dayIndex: getDayIndex(), date: key };
+    saveState();
+    showSelfiePreview(data);
+    document.getElementById('selfie-upload-text').textContent = 'Photo saved — tap to replace';
+    showToast('📸 Photo saved!', 'blue');
+    renderPhotoGallery();
+    renderCalendar();
+  };
+  reader.readAsDataURL(file);
+}
+
+function showSelfiePreview(data) {
+  const img = document.getElementById('selfie-preview');
+  img.src = data;
+  img.classList.add('show');
+  document.getElementById('selfie-icon').textContent = '✅';
+  setPrivacy(currentPrivacy, false);
+}
+
+function renderPhotoGallery() {
+  const grid = document.getElementById('photo-grid');
+  if (!grid) return;
+  if (!state.photos || Object.keys(state.photos).length === 0) {
+    grid.innerHTML = `<div class="photo-empty" style="grid-column:1/-1;">No photos yet — take your first progress photo today!</div>`;
+    return;
+  }
+  const entries = Object.entries(state.photos)
+    .filter(([k,v]) => photoFilter==='all' || v.privacy===photoFilter)
+    .sort((a,b)=>b[0].localeCompare(a[0]));
+  if (entries.length===0) {
+    grid.innerHTML = `<div class="photo-empty" style="grid-column:1/-1;">No ${photoFilter} photos yet.</div>`;
+    return;
+  }
+  grid.innerHTML = entries.map(([k,v]) => `
+    <div class="photo-thumb" onclick="openLightbox('${k}')">
+      <img src="${v.data}" alt="Day ${v.dayIndex}">
+      <div class="photo-thumb-overlay">
+        <div class="photo-thumb-day">Day ${v.dayIndex||'?'}</div>
+        <div class="photo-thumb-privacy">${v.privacy==='private'?'🔒 Private':'👥 Shared'}</div>
+      </div>
+      ${v.privacy==='private' ? '<div class="photo-lock">🔒</div>' : ''}
+    </div>`).join('');
+}
+
+function filterPhotos(mode, btn) {
+  photoFilter = mode;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderPhotoGallery();
+}
+
+function openLightbox(key) {
+  const ph = state.photos && state.photos[key];
+  if (!ph) return;
+  currentLightboxKey = key;
+  document.getElementById('lightbox-img').src = ph.data;
+  document.getElementById('lightbox-day').textContent = `Day ${ph.dayIndex||'?'}`;
+  document.getElementById('lightbox-date').textContent = ph.date || key;
+  document.getElementById('lightbox-privacy-badge').innerHTML = ph.privacy==='private'
+    ? `<div class="lightbox-privacy private">🔒 Private</div>`
+    : `<div class="lightbox-privacy shared">👥 Shared with Buddies</div>`;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); currentLightboxKey=null; }
+
+function togglePhotoPrivacy(key) {
+  if (!key || !state.photos || !state.photos[key]) return;
+  state.photos[key].privacy = state.photos[key].privacy==='private' ? 'shared' : 'private';
+  saveState();
+  openLightbox(key);
+  renderPhotoGallery();
+  showToast('Privacy updated', 'blue');
+}
+
+function deletePhoto(key) {
+  if (!key || !state.photos) return;
+  if (!confirm('Delete this photo? This cannot be undone.')) return;
+  delete state.photos[key];
+  saveState();
+  closeLightbox();
+  renderPhotoGallery();
+  renderCalendar();
+  if (key===todayKey()) {
+    document.getElementById('selfie-preview').classList.remove('show');
+    document.getElementById('selfie-icon').textContent='📷';
+    document.getElementById('selfie-upload-text').textContent='Tap to upload today\'s photo';
+    document.getElementById('selfie-badge').innerHTML='';
+  }
+  showToast('Photo deleted', 'red');
+}
+
+// ════════════════════════════════════════
+// BUDDY SYSTEM
+// ════════════════════════════════════════
+function addBuddy() {
+  const nameEl = document.getElementById('buddy-name-input');
+  const daysEl = document.getElementById('buddy-days-input');
+  const statusEl = document.getElementById('buddy-status-input');
+  const name = nameEl.value.trim();
+  if (!name) { nameEl.focus(); return; }
+  const days = parseInt(daysEl.value)||0;
+  const status = statusEl.value;
+  if (!state.buddies) state.buddies = [];
+  const buddy = {
+    id: Date.now(),
+    name,
+    days: Math.min(Math.max(days,0),cfg.totalDays),
+    status,
+    addedAt: new Date().toISOString(),
+    colorClass: 'color-'+(state.buddies.length%5)
+  };
+  state.buddies.push(buddy);
+  saveState();
+  nameEl.value=''; daysEl.value='';
+  renderBuddyList();
+  renderBuddyFeed();
+  showToast(`${name} added to your squad!`, 'green');
+}
+
+function removeBuddy(id) {
+  state.buddies = (state.buddies||[]).filter(b=>b.id!==id);
+  saveState();
+  renderBuddyList();
+  renderBuddyFeed();
+}
+
+function renderBuddyList() {
+  const list = document.getElementById('buddy-list');
+  const buddies = state.buddies||[];
+  document.getElementById('squad-count').textContent = `${buddies.length} accountability partner${buddies.length!==1?'s':''}`;
+  if (!buddies.length) {
+    list.innerHTML = `<div class="buddy-empty">No buddies yet — add your first accountability partner above.</div>`;
+    return;
+  }
+  list.innerHTML = buddies.map(b => {
+    const initials = b.name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+    const statusLabel = b.status==='completed'?'✅ Completed':b.status==='restart'?'↺ Restarted':'🔥 Active';
+    const pct = Math.round((b.days/cfg.totalDays)*100);
+    return `
+    <div class="buddy-item">
+      <div class="buddy-avatar ${b.colorClass||'color-0'}">${initials}</div>
+      <div class="buddy-info">
+        <div class="buddy-name">${escapeHtml(b.name)}</div>
+        <div class="buddy-meta">${statusLabel} · ${pct}% done</div>
+        <div style="height:3px;background:var(--border);margin-top:6px;"><div style="height:100%;width:${pct}%;background:var(--red);transition:width 0.5s;"></div></div>
+      </div>
+      <div style="text-align:center;">
+        <div class="buddy-streak">${b.days}</div>
+        <div class="buddy-streak-label">days</div>
+      </div>
+      <button class="buddy-remove" onclick="removeBuddy(${b.id})" title="Remove">✕</button>
+    </div>`;
+  }).join('');
+}
+
+function renderBuddyFeed() {
+  const feed = document.getElementById('buddy-feed');
+  const buddies = state.buddies||[];
+  const myDay = getDayIndex();
+  const myKey = todayKey();
+  const myData = state.days[myKey];
+  const myDone = myData ? taskIds().filter(id=>myData[id]).length : 0;
+
+  const events = [];
+  // my own entry
+  if (myData) {
+    events.push({
+      type: myDone===taskIds().length ? 'complete' : 'partial',
+      text: `You completed ${myDone}/${taskIds().length} tasks on Day ${myDay}`,
+      time: 'Today'
+    });
+    // shared photos
+    const myPhoto = state.photos && state.photos[myKey];
+    if (myPhoto && myPhoto.privacy==='shared') {
+      events.push({ type:'complete', text:`You shared a progress photo for Day ${myDay}`, time:'Today' });
+    }
+  }
+  // buddies
+  buddies.forEach(b => {
+    if (b.days>0) events.push({ type:'complete', text:`${b.name} is on Day ${b.days} (${Math.round(b.days/cfg.totalDays*100)}% done)`, time:'Updated' });
+    if (b.status==='completed') events.push({ type:'complete', text:`${b.name} completed the full challenge! 🏆`, time:'Recently' });
+    if (b.status==='restart') events.push({ type:'partial', text:`${b.name} restarted their challenge — Day 1 again`, time:'Recently' });
+  });
+
+  if (!events.length) {
+    feed.innerHTML = `<div class="buddy-empty">No activity yet — save your day or add buddies to see updates here.</div>`;
+    return;
+  }
+  feed.innerHTML = `<div style="border:1px solid var(--border);">${events.slice(0,8).map(e=>`
+    <div class="feed-item">
+      <div class="feed-dot ${e.type}"></div>
+      <div>
+        <div class="feed-text">${e.text}</div>
+        <div class="feed-time">${e.time}</div>
+      </div>
+    </div>`).join('')}</div>`;
+}
+
+// ════════════════════════════════════════
+// ADMIN PANEL
+// ════════════════════════════════════════
+function openAdmin() {
+  document.getElementById('admin-overlay').classList.add('open');
+  document.getElementById('admin-lock-screen').style.display='block';
+  document.getElementById('admin-content').style.display='none';
+  document.getElementById('admin-pw-input').value='';
+  setTimeout(()=>document.getElementById('admin-pw-input').focus(), 300);
+}
+function closeAdmin() { document.getElementById('admin-overlay').classList.remove('open'); }
+
+function checkAdminPw() {
+  const pw = document.getElementById('admin-pw-input').value;
+  if (pw===cfg.adminPw) {
+    document.getElementById('admin-lock-screen').style.display='none';
+    document.getElementById('admin-content').style.display='block';
+    populateAdminTabs();
+  } else {
+    document.getElementById('admin-pw-input').style.borderColor='var(--red)';
+    document.getElementById('admin-pw-input').value='';
+    showToast('Wrong password', 'red');
+    setTimeout(()=>document.getElementById('admin-pw-input').style.borderColor='',1500);
+  }
+}
+
+function switchAdminTab(tab, btn) {
+  document.querySelectorAll('.admin-tab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.admin-section').forEach(s=>s.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-'+tab).classList.add('active');
+}
+
+function populateAdminTabs() {
+  // Tasks
+  renderTaskEditor();
+  // Challenge
+  document.getElementById('cfg-name').value = cfg.name;
+  document.getElementById('cfg-days').value = cfg.totalDays;
+  document.getElementById('cfg-desc').value = cfg.desc||'';
+  updateCfgPreview();
+  // Photo
+  document.getElementById('tog-require-photo').checked = cfg.photo.requirePhoto;
+  document.getElementById('tog-privacy-choice').checked = cfg.photo.allowPrivacyChoice;
+  document.getElementById('tog-default-private').checked = cfg.photo.defaultPrivate;
+  document.getElementById('tog-show-gallery').checked = cfg.photo.showGallery;
+}
+
+function renderTaskEditor() {
+  const list = document.getElementById('task-editor-list');
+  list.innerHTML = '';
+  cfg.tasks.forEach((task,i) => {
+    const row = document.createElement('div');
+    row.className = 'task-editor-item';
+    row.dataset.index = i;
+    row.innerHTML = `
+      <div class="task-num">0${i+1}</div>
+      <input type="text" class="task-editor-input" placeholder="Task name..." value="${escapeHtml(task.name)}" data-field="name">
+      <input type="text" class="task-detail-input" placeholder="Description (optional)..." value="${escapeHtml(task.detail||'')}" data-field="detail">
+      <button class="task-delete-btn" onclick="removeTaskRow(${i})">✕</button>`;
+    list.appendChild(row);
+  });
+  updateCfgPreview();
+}
+
+function addNewTask() {
+  cfg.tasks.push({name:'New Task',detail:''});
+  renderTaskEditor();
+}
+function removeTaskRow(i) {
+  if (cfg.tasks.length<=1) { showToast('Must have at least 1 task','red'); return; }
+  cfg.tasks.splice(i,1);
+  renderTaskEditor();
+}
+function saveTasks() {
+  const rows = document.querySelectorAll('.task-editor-item');
+  const tasks = [];
+  rows.forEach(row => {
+    const name = row.querySelector('[data-field="name"]').value.trim();
+    const detail = row.querySelector('[data-field="detail"]').value.trim();
+    if (name) tasks.push({name,detail});
+  });
+  if (!tasks.length) { showToast('Add at least 1 task','red'); return; }
+  cfg.tasks = tasks;
+  saveCfg(cfg);
+  renderTasks();
+  renderRules();
+  showToast('✓ Tasks saved!','green');
+}
+
+function updateCfgPreview() {
+  const d = parseInt(document.getElementById('cfg-days')?.value)||75;
+  const t = cfg.tasks.length;
+  if (document.getElementById('prev-days')) document.getElementById('prev-days').textContent=d;
+  if (document.getElementById('prev-tasks')) document.getElementById('prev-tasks').textContent=t;
+  if (document.getElementById('prev-total')) document.getElementById('prev-total').textContent=d*t;
+}
+function updatePhotoPreview() {} // live, no extra needed
+
+function saveChallengeCfg() {
+  cfg.name = document.getElementById('cfg-name').value.trim() || '75 Hard';
+  cfg.totalDays = parseInt(document.getElementById('cfg-days').value)||75;
+  cfg.desc = document.getElementById('cfg-desc').value.trim();
+  saveCfg(cfg);
+  renderRules();
+  renderCalendar();
+  updateStats();
+  showToast('✓ Challenge settings saved!','green');
+}
+
+function savePhotoCfg() {
+  cfg.photo.requirePhoto = document.getElementById('tog-require-photo').checked;
+  cfg.photo.allowPrivacyChoice = document.getElementById('tog-privacy-choice').checked;
+  cfg.photo.defaultPrivate = document.getElementById('tog-default-private').checked;
+  cfg.photo.showGallery = document.getElementById('tog-show-gallery').checked;
+  saveCfg(cfg);
+  initSelfiePanel();
+  showToast('✓ Photo settings saved!','green');
+}
+
+function changePassword() {
+  const cur = document.getElementById('sec-current').value;
+  const nw = document.getElementById('sec-new').value;
+  const cf = document.getElementById('sec-confirm').value;
+  if (cur !== cfg.adminPw) { showToast('Wrong current password','red'); return; }
+  if (nw.length < 4) { showToast('Min 4 characters','red'); return; }
+  if (nw !== cf) { showToast('Passwords don\'t match','red'); return; }
+  cfg.adminPw = nw;
+  saveCfg(cfg);
+  document.getElementById('sec-current').value='';
+  document.getElementById('sec-new').value='';
+  document.getElementById('sec-confirm').value='';
+  showToast('✓ Password changed!','green');
+}
+
+function clearAllData() {
+  if (!confirm('This will delete ALL progress, photos, and buddies. Are you sure?')) return;
+  localStorage.removeItem('75hard_state');
+  state = {startDate:null,days:{},photos:{},buddies:[]};
+  closeAdmin();
+  init();
+  showToast('All data cleared','red');
+}
+
+// Add listener for cfg-days change
+document.addEventListener('DOMContentLoaded',()=>{
+  const el = document.getElementById('cfg-days');
+  if (el) el.addEventListener('input', updateCfgPreview);
+});
+
+// ════════════════════════════════════════
+// MODALS
+// ════════════════════════════════════════
+function openRestartModal() {
+  document.getElementById('start-date-input').value = new Date().toISOString().split('T')[0];
+  document.getElementById('restart-modal').classList.add('open');
+}
+function closeRestartModal() { document.getElementById('restart-modal').classList.remove('open'); }
+function confirmRestart() {
+  const val = document.getElementById('start-date-input').value;
+  if (!val) return;
+  state.startDate = val;
+  state.days = {};
+  state.photos = {};
+  saveState();
+  closeRestartModal();
+  renderTasks();
+  renderCalendar();
+  updateStats();
+  initSelfiePanel();
+  renderBuddyFeed();
+  showToast('🔥 Challenge started — Day 1!','red');
+}
+
+document.getElementById('restart-modal').addEventListener('click',function(e){ if(e.target===this) closeRestartModal(); });
+document.getElementById('lightbox').addEventListener('click',function(e){ if(e.target===this) closeLightbox(); });
+
+// ════════════════════════════════════════
+// TOAST
+// ════════════════════════════════════════
+let toastTimer;
+function showToast(msg, color='green') {
+  const t = document.getElementById('toast');
+  const colors = { green:'var(--green-bright)', red:'var(--red)', blue:'#60a5fa' };
+  t.style.borderLeftColor = colors[color]||colors.green;
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.classList.remove('show'), 2800);
+}
+
+// ════════════════════════════════════════
+// FAQ
+// ════════════════════════════════════════
+function toggleFaq(el) { el.parentElement.classList.toggle('open'); }
+
+// ════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════
+function init() {
+  cfg = loadCfg();
+  state = loadState();
+  renderRules();
+  renderTasks();
+  updateStats();
+  renderCalendar();
+  initSelfiePanel();
+  renderBuddyList();
+  renderBuddyFeed();
+  if (!state.startDate) openRestartModal();
+}
+
+init();
+</script>
+</body>
+</html>
